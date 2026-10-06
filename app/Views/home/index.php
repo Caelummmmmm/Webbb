@@ -174,7 +174,17 @@
                     </div>
                 <?php endif; ?>
             </div>
+            <?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success">
+        <?= esc(session()->getFlashdata('success')) ?>
+    </div>
+<?php endif; ?>
 
+<div class="d-flex justify-content-end mb-3">
+    <a href="<?= base_url('account/new') ?>" class="btn btn-primary">
+        Add Customer Account
+    </a>
+</div>
             <!-- Customer Accounts Table -->
             <div class="table-container">
                 <table class="table table-hover">
@@ -209,10 +219,14 @@
                                         <span class="badge <?= $badgeClass ?>"><?= ucfirst(esc($account['status'])) ?></span>
                                     </td>
                                     <td>
-                                        <a href="<?= base_url('account/' . $account['id']) ?>" class="btn btn-sm btn-outline-primary">
-                                            <i class="bi bi-eye"></i> View
-                                        </a>
-                                    </td>
+    <a href="<?= base_url('account/' . $account['id']) ?>" class="btn btn-sm btn-outline-primary">
+        View
+    </a>
+
+    <a href="<?= base_url('account/' . $account['id'] . '/edit') ?>" class="btn btn-sm btn-outline-secondary">
+        Edit
+    </a>
+</td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>

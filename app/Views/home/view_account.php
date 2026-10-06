@@ -158,7 +158,18 @@
                     </div>
                 </div>
             </div>
+<a href="<?= base_url('account/' . $account['id'] . '/edit') ?>" class="btn btn-outline-primary">
+    Edit Account
+</a>
 
+<form class="d-inline" method="post"
+      action="<?= base_url('account/' . $account['id'] . '/delete') ?>"
+      onsubmit="return confirm('Delete this customer account?');">
+    <?= csrf_field() ?>
+    <button class="btn btn-outline-danger" type="submit">
+        Delete Account
+    </button>
+</form>
             <!-- Action Buttons -->
             <div class="mt-4 text-center">
     <a href="<?= base_url() ?>" class="btn btn-primary btn-lg">
